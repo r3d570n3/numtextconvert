@@ -5,8 +5,9 @@ import unittest
 
 from numtextconvert import utils
 
+
 class TestUtils(unittest.TestCase):
-    """Unit tests for the utils module."""
+    """Unit tests for the utility functions."""
 
     def test_n2t_0_19(self):
         """Test numbers from 0 to 19."""
