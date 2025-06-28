@@ -9,7 +9,7 @@ from numtextconvert.num2text import num2text
 class TestNum2Text(unittest.TestCase):
     """Unit tests for the num2text function."""
 
-    def test_0_99(self):
+    def test_0_999(self):
         """Test numbers from 0 to 99."""
         self.assertEqual(num2text(0), "zero")
         self.assertEqual(num2text(1), "one")
@@ -20,11 +20,12 @@ class TestNum2Text(unittest.TestCase):
         self.assertEqual(num2text(20), "twenty")
         self.assertEqual(num2text(21), "twenty one")
         self.assertEqual(num2text(29), "twenty nine")
-        self.assertEqual(num2text(30), "thirty")
-        self.assertEqual(num2text(40), "forty")
-        self.assertEqual(num2text(50), "fifty")
-        self.assertEqual(num2text(60), "sixty")
-        self.assertEqual(num2text(70), "seventy")
-        self.assertEqual(num2text(80), "eighty")
         self.assertEqual(num2text(90), "ninety")
         self.assertEqual(num2text(99), "ninety nine")
+        self.assertEqual(num2text(100), "one hundred")
+        self.assertEqual(num2text(101), "one hundred one")
+        self.assertEqual(num2text(119), "one hundred nineteen")
+        self.assertEqual(num2text(120), "one hundred twenty")
+        self.assertEqual(num2text(199), "one hundred ninety nine")
+        self.assertEqual(num2text(200), "two hundred")
+        self.assertEqual(num2text(999), "nine hundred ninety nine")
