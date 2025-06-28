@@ -9,14 +9,13 @@ from numtextconvert import utils
 class TestUtils(unittest.TestCase):
     """Unit tests for the utility functions."""
 
-    def test_n2t_0_19(self):
-        """Test numbers from 0 to 19."""
-        self.assertEqual(utils.n2t_0_19(0), "zero")
-        self.assertEqual(utils.n2t_0_19(1), "one")
-        self.assertEqual(utils.n2t_0_19(9), "nine")
-        self.assertEqual(utils.n2t_0_19(10), "ten")
-        self.assertEqual(utils.n2t_0_19(11), "eleven")
-        self.assertEqual(utils.n2t_0_19(19), "nineteen")
+    def test_n2t_1_19(self):
+        """Test numbers from 1 to 19."""
+        self.assertEqual(utils.n2t_1_19(1), "one")
+        self.assertEqual(utils.n2t_1_19(9), "nine")
+        self.assertEqual(utils.n2t_1_19(10), "ten")
+        self.assertEqual(utils.n2t_1_19(11), "eleven")
+        self.assertEqual(utils.n2t_1_19(19), "nineteen")
 
     def test_n2t_20_99(self):
         """Test numbers from 20 to 99."""

@@ -1,9 +1,25 @@
 """Module with utility functions for number to text conversion."""
 
 
-def n2t_0_19(num: int) -> str:
+WORDS_UNITS = [
+    'one', 'two', 'three', 'four', 'five',
+    'six', 'seven', 'eight', 'nine'
+]
+
+WORDS_TEENS = [
+    'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
+    'sixteen', 'seventeen', 'eighteen', 'nineteen'
+]
+
+WORDS_TENS = [
+    'twenty', 'thirty', 'forty', 'fifty',
+    'sixty', 'seventy', 'eighty', 'ninety'
+]
+
+
+def n2t_1_19(num: int) -> str:
     """
-    Convert a number from 0 to 19 to its text representation.
+    Convert a number from 1 to 19 to its text representation.
 
     Args:
         num (int): The number to convert.
@@ -14,18 +30,14 @@ def n2t_0_19(num: int) -> str:
     Raises:
         ValueError: If the number is not between 0 and 19.
     """
-    if not 0 <= num < 20:
-        raise ValueError("number must be between 0 and 19")
+    if not 0 < num < 20:
+        raise ValueError("number must be in the range of 1 to 19")
 
-    num_words = [
-        "zero", "one", "two", "three", "four",
-        "five", "six", "seven", "eight", "nine",
-        "ten", "eleven", "twelve", "thirteen",
-        "fourteen", "fifteen", "sixteen", "seventeen",
-        "eighteen", "nineteen"
-    ]
-
-    return num_words[num]
+    if num < 10:
+        return WORDS_UNITS[num - 1]
+    if num == 10:
+        return 'ten'
+    return WORDS_TEENS[num - 11]
 
 
 def n2t_20_99(num: int) -> str:
@@ -42,19 +54,11 @@ def n2t_20_99(num: int) -> str:
         ValueError: If the number is not between 20 and 99.
     """
     if not 20 <= num < 100:
-        raise ValueError("number must be between 20 and 99")
-
-    tens_words = [
-        '', '', 'twenty', 'thirty', 'forty',
-        'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
-    ]
-    units_words = [
-        '', ' one', ' two', ' three', ' four',
-        ' five', ' six', ' seven', ' eight', ' nine'
-    ]
+        raise ValueError("number must be in the range of 20 to 99")
 
     tens = num // 10
     units = num % 10
-    text = tens_words[tens] + units_words[units]
 
-    return text
+    if units == 0:
+        return WORDS_TENS[tens - 2]
+    return f"{WORDS_TENS[tens - 2]} {WORDS_UNITS[units - 1]}"
