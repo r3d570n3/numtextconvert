@@ -1,20 +1,20 @@
 """Module with utility functions for number to text conversion."""
 
 
-WORDS_UNITS = [
+WORDS_UNITS = (
     "one", "two", "three", "four", "five",
     "six", "seven", "eight", "nine", "zero"
-]
+)
 
-WORDS_TEENS = [
+WORDS_TEENS = (
     "eleven", "twelve", "thirteen", "fourteen", "fifteen",
     "sixteen", "seventeen", "eighteen", "nineteen"
-]
+)
 
-WORDS_TENS = [
+WORDS_TENS = (
     "twenty", "thirty", "forty", "fifty",
     "sixty", "seventy", "eighty", "ninety"
-]
+)
 
 
 def n2t_1_19(num: int) -> str:
