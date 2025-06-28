@@ -16,6 +16,11 @@ WORDS_TENS = (
     "sixty", "seventy", "eighty", "ninety"
 )
 
+WORDS_BIG = (
+    "thousand", "million", "billion", "trillion", "quadrillion",
+    "quintillion", "sextillion", "septillion", "octillion", "nonillion"
+)
+
 
 def n2t_1_19(num: int) -> str:
     """
@@ -30,7 +35,7 @@ def n2t_1_19(num: int) -> str:
     Raises:
         ValueError: If the number is not between 1 and 19.
     """
-    if not 0 < num < 20:
+    if not 1 <= num <= 19:
         raise ValueError("number must be between 1 and 19")
 
     if num < 10:
@@ -53,7 +58,7 @@ def n2t_20_99(num: int) -> str:
     Raises:
         ValueError: If the number is not between 20 and 99.
     """
-    if not 20 <= num < 100:
+    if not 20 <= num <= 99:
         raise ValueError("number must be between 20 and 99")
 
     tens = num // 10
@@ -77,7 +82,7 @@ def n2t_100_999(num: int) -> str:
     Raises:
         ValueError: If the number is not between 100 and 999.
     """
-    if not 100 <= num < 1000:
+    if not 100 <= num <= 999:
         raise ValueError("number must be between 100 and 999")
 
     hundreds = num // 100
@@ -90,3 +95,55 @@ def n2t_100_999(num: int) -> str:
     if remainder < 20:
         return f"{text} {n2t_1_19(remainder)}"
     return f"{text} {n2t_20_99(remainder)}"
+
+
+def n2t_1_999(num: int) -> str:
+    """
+    Convert a number from 0 to 999 to its text representation.
+
+    Args:
+        num (int): The number to convert.
+
+    Returns:
+        str: The text representation of the number.
+
+    Raises:
+        ValueError: If the number is not between 1 and 999.
+    """
+    if not 1 <= num <= 999:
+        raise ValueError("number must be between 1 and 999")
+
+    if num <= 19:
+        return n2t_1_19(num)
+    if num <= 99:
+        return n2t_20_99(num)
+    return n2t_100_999(num)
+
+
+def split_digits(num: int) -> list[str]:
+    """
+    Split a number into chunks of three digits from the left.
+
+    Args:
+        num (int): The number to split.
+
+    Returns:
+        list[str]: A list of 3-digit chunks.
+
+    Raises:
+        ValueError: If the number is not positive.
+    """
+    if num <= 0:
+        raise ValueError("number must be positive")
+
+    chunks: list[str] = []
+    num_digits: str = str(num)
+
+    while len(num_digits) > 3:
+        chunks.append(num_digits[-3:])
+        num_digits = num_digits[:-3]
+
+    if num_digits:
+        chunks.append(num_digits)
+
+    return chunks[::-1]  # Maintain left-to-right order

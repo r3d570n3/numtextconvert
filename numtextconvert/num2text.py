@@ -1,7 +1,7 @@
 """Module to convert numbers to text representation."""
 
 
-from numtextconvert.utils import n2t_1_19, n2t_20_99, n2t_100_999
+from numtextconvert.utils import WORDS_BIG, n2t_1_999, split_digits
 
 
 def num2text(num: int) -> str:
@@ -13,21 +13,21 @@ def num2text(num: int) -> str:
     Returns:
         str: The text representation of the number.
     """
-    text: str = ""
-
     if num == 0:
         return "zero"
 
-    # if num < 0:
-    #     text += 'minus '
-    #     num = -num
+    chunks = split_digits(num)
+    chunks.reverse() # Process from the least significant digit
 
-    # Last 3 digits
-    if num < 20:
-        text += n2t_1_19(num)
-    elif num < 100:
-        text += n2t_20_99(num)
-    else:
-        text += n2t_100_999(num)
+    # Process 3 rightmost digits first
+    text = ""
+    if chunks[0] != "000":
+        text = n2t_1_999(int(chunks[0]))
+    chunks.pop(0)  # Remove the first chunk
+
+    for i, chunk in enumerate(chunks):
+        if chunk == "000":
+            continue
+        text = f"{n2t_1_999(int(chunk))} {WORDS_BIG[i]} {text}".strip()
 
     return text

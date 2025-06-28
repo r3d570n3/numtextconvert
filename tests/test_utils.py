@@ -49,3 +49,39 @@ class TestUtils(unittest.TestCase):
             utils.n2t_100_999(99)
         with self.assertRaises(ValueError):
             utils.n2t_100_999(1000)
+
+    def test_n2t_1_999(self):
+        """Test numbers from 1 to 999."""
+        self.assertEqual(utils.n2t_1_999(1), "one")
+        self.assertEqual(utils.n2t_1_999(9), "nine")
+        self.assertEqual(utils.n2t_1_999(10), "ten")
+        self.assertEqual(utils.n2t_1_999(11), "eleven")
+        self.assertEqual(utils.n2t_1_999(19), "nineteen")
+        self.assertEqual(utils.n2t_1_999(20), "twenty")
+        self.assertEqual(utils.n2t_1_999(21), "twenty one")
+        self.assertEqual(utils.n2t_1_999(29), "twenty nine")
+        self.assertEqual(utils.n2t_1_999(90), "ninety")
+        self.assertEqual(utils.n2t_1_999(99), "ninety nine")
+        self.assertEqual(utils.n2t_1_999(100), "one hundred")
+        self.assertEqual(utils.n2t_1_999(101), "one hundred one")
+        self.assertEqual(utils.n2t_1_999(119), "one hundred nineteen")
+        self.assertEqual(utils.n2t_1_999(120), "one hundred twenty")
+        self.assertEqual(utils.n2t_1_999(199), "one hundred ninety nine")
+        self.assertEqual(utils.n2t_1_999(200), "two hundred")
+        self.assertEqual(utils.n2t_1_999(999), "nine hundred ninety nine")
+
+        with self.assertRaises(ValueError):
+            utils.n2t_1_999(0)
+        with self.assertRaises(ValueError):
+            utils.n2t_1_999(1000)
+
+    def test_split_digits(self):
+        """Test splitting digits."""
+        self.assertEqual(utils.split_digits(1), ['1'])
+        self.assertEqual(utils.split_digits(12), ['12'])
+        self.assertEqual(utils.split_digits(123), ['123'])
+        self.assertEqual(utils.split_digits(1234), ['1', '234'])
+        self.assertEqual(utils.split_digits(123456789), ['123', '456', '789'])
+
+        with self.assertRaises(ValueError):
+            utils.split_digits(0)
