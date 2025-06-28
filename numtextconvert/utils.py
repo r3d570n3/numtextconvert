@@ -28,7 +28,7 @@ def n2t_1_19(num: int) -> str:
         str: The text representation of the number.
 
     Raises:
-        ValueError: If the number is not between 0 and 19.
+        ValueError: If the number is not in the range of 1 to 19.
     """
     if not 0 < num < 20:
         raise ValueError("number must be in the range of 1 to 19")
@@ -51,7 +51,7 @@ def n2t_20_99(num: int) -> str:
         str: The text representation of the number.
 
     Raises:
-        ValueError: If the number is not between 20 and 99.
+        ValueError: If the number is not in the range of 20 to 99.
     """
     if not 20 <= num < 100:
         raise ValueError("number must be in the range of 20 to 99")
@@ -75,7 +75,7 @@ def n2t_100_999(num: int) -> str:
         str: The text representation of the number.
 
     Raises:
-        ValueError: If the number is not between 100 and 999.
+        ValueError: If the number is not in the range of 100 to 999.
     """
     if not 100 <= num < 1000:
         raise ValueError("number must be in the range of 100 to 999")
