@@ -17,6 +17,11 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(utils.n2t_1_19(11), "eleven")
         self.assertEqual(utils.n2t_1_19(19), "nineteen")
 
+        with self.assertRaises(ValueError):
+            utils.n2t_1_19(0)
+        with self.assertRaises(ValueError):
+            utils.n2t_1_19(20)
+
     def test_n2t_20_99(self):
         """Test numbers from 20 to 99."""
         self.assertEqual(utils.n2t_20_99(20), "twenty")
@@ -24,6 +29,11 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(utils.n2t_20_99(29), "twenty nine")
         self.assertEqual(utils.n2t_20_99(90), "ninety")
         self.assertEqual(utils.n2t_20_99(99), "ninety nine")
+
+        with self.assertRaises(ValueError):
+            utils.n2t_20_99(19)
+        with self.assertRaises(ValueError):
+            utils.n2t_20_99(100)
 
     def test_n2t_100_999(self):
         """Test numbers from 100 to 999."""
@@ -34,3 +44,8 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(utils.n2t_100_999(199), "one hundred ninety nine")
         self.assertEqual(utils.n2t_100_999(200), "two hundred")
         self.assertEqual(utils.n2t_100_999(999), "nine hundred ninety nine")
+
+        with self.assertRaises(ValueError):
+            utils.n2t_100_999(99)
+        with self.assertRaises(ValueError):
+            utils.n2t_100_999(1000)
