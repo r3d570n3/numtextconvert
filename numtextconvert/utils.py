@@ -28,10 +28,10 @@ def n2t_1_19(num: int) -> str:
         str: The text representation of the number.
 
     Raises:
-        ValueError: If the number is not in the range of 1 to 19.
+        ValueError: If the number is not between 1 and 19.
     """
     if not 0 < num < 20:
-        raise ValueError("number must be in the range of 1 to 19")
+        raise ValueError("number must be between 1 and 19")
 
     if num < 10:
         return WORDS_UNITS[num - 1]
@@ -51,10 +51,10 @@ def n2t_20_99(num: int) -> str:
         str: The text representation of the number.
 
     Raises:
-        ValueError: If the number is not in the range of 20 to 99.
+        ValueError: If the number is not between 20 and 99.
     """
     if not 20 <= num < 100:
-        raise ValueError("number must be in the range of 20 to 99")
+        raise ValueError("number must be between 20 and 99")
 
     tens = num // 10
     units = num % 10
@@ -75,10 +75,10 @@ def n2t_100_999(num: int) -> str:
         str: The text representation of the number.
 
     Raises:
-        ValueError: If the number is not in the range of 100 to 999.
+        ValueError: If the number is not between 100 and 999.
     """
     if not 100 <= num < 1000:
-        raise ValueError("number must be in the range of 100 to 999")
+        raise ValueError("number must be between 100 and 999")
 
     hundreds = num // 100
     remainder = num % 100
