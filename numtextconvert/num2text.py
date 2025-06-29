@@ -1,7 +1,8 @@
 """Module to convert numbers to text representation."""
 
 
-from numtextconvert.utils import WORDS_BIG, n2t_1_999, split_digits
+from numtextconvert.utils import n2t_1_999, split_digits
+from numtextconvert.bignum import n2t_1000_power
 
 
 def num2text(num: int) -> str:
@@ -28,6 +29,6 @@ def num2text(num: int) -> str:
     for i, chunk in enumerate(chunks):
         if chunk == "000":
             continue
-        text = f"{n2t_1_999(int(chunk))} {WORDS_BIG[i]} {text}".strip()
+        text = f"{n2t_1_999(int(chunk))} {n2t_1000_power(i + 1)} {text}".strip()
 
     return text

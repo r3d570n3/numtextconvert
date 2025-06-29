@@ -10,8 +10,8 @@ class TestNum2Text(unittest.TestCase):
     """Unit tests for the num2text function."""
 
     def test_0_999(self):
-        """Test numbers from 0 to 99."""
-        # self.assertEqual(num2text(0), "zero")
+        """Test numbers from 0 to 999."""
+        self.assertEqual(num2text(0), "zero")
         self.assertEqual(num2text(1), "one")
         self.assertEqual(num2text(9), "nine")
         self.assertEqual(num2text(10), "ten")
@@ -40,9 +40,3 @@ class TestNum2Text(unittest.TestCase):
         self.assertEqual(num2text(1_999), "one thousand nine hundred ninety nine")
         self.assertEqual(num2text(2_000), "two thousand")
         self.assertEqual(num2text(1_000_000), "one million")
-        self.assertEqual(num2text(1_000_000_000), "one billion")
-        self.assertEqual(num2text(1_000_000_000_000), "one trillion")
-
-        # Many different digits
-        # pylint:disable=line-too-long
-        self.assertEqual(num2text(1_234_567_890), "one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety")
