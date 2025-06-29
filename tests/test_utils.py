@@ -85,3 +85,17 @@ class TestUtils(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             utils.split_digits(0)
+
+    def test_power_of_1000_text(self):
+        """Test power of 1000 text representation."""
+        self.assertEqual(utils.power_of_1000_text(1), "thousand")
+        self.assertEqual(utils.power_of_1000_text(2), "million")
+        self.assertEqual(utils.power_of_1000_text(3), "billion")
+        self.assertEqual(utils.power_of_1000_text(4), "trillion")
+        self.assertEqual(utils.power_of_1000_text(5), "quadrillion")
+        self.assertEqual(utils.power_of_1000_text(6), "quintillion")
+        self.assertEqual(utils.power_of_1000_text(7), "sextillion")
+        self.assertEqual(utils.power_of_1000_text(8), "septillion")
+        self.assertEqual(utils.power_of_1000_text(9), "octillion")
+        self.assertEqual(utils.power_of_1000_text(10), "nonillion")
+        self.assertEqual(utils.power_of_1000_text(11), "decillion")
